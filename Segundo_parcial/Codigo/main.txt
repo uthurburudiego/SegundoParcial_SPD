@@ -76,7 +76,15 @@ IrReceiver.resume();
 
 /*##################   FIN  ########################*/
 
-
+/**
+ * Detecta un posible incendio en base a la temperatura medida.
+ * Si la temperatura supera el límite máximo y el LED verde está encendido,
+ * se activa una alarma y se muestra un mensaje en el LCD.
+ * En caso contrario, se desactiva la alarma.
+ *
+ * @param maxima     La temperatura máxima permitida para considerar un incendio.
+ * @param temperatura La temperatura medida actual.
+ */
 void detectar_incendio(float maxima, float temperatura)
 {
 	if(temperatura >= maxima && digitalRead(LED_GREEN)== HIGH)
@@ -92,7 +100,13 @@ void detectar_incendio(float maxima, float temperatura)
     }
 
 }
-
+/**
+ * Maneja el sistema en base a la opción seleccionada.
+ *
+ * @param opcion  La opción seleccionada.
+ * @param maxima  Puntero al valor máximo de temperatura.
+ * @return        El estado actual del sistema (encendido o apagado).
+ */
 bool manejar_sistema(long opcion, float* maxima)
 {
 	lcd.clear();
@@ -139,10 +153,15 @@ bool manejar_sistema(long opcion, float* maxima)
 
 	return estado; 
 }
-
+/**
+ * Muestra un texto en la pantalla LCD en la posición indicada.
+ *
+ * @param cursor  La posición del cursor (1 o 2).
+ * @param texto   El texto a mostrar.
+ * @param tem     El valor de temperatura a mostrar (opcional).
+ */
 void mostrar_lcd(int cursor, char* texto, float tem)
 { 
-  	//lcd.clear();
   	
 	if (cursor == 1)
     {	
@@ -161,9 +180,16 @@ void mostrar_lcd(int cursor, char* texto, float tem)
       	lcd.print("°C");
   	}
 }
-
+/**
+ * Controla el estado de un LED.
+ *
+ * @param led     El pin del LED.
+ * @param estado  El estado del LED (HIGH o LOW).
+ */
 void controlar_leds(int led, int estado)
 {
 	digitalWrite(led, estado);
 
 }
+
+	
