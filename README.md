@@ -1,4 +1,4 @@
-# SegundoParcial_SPD
+# Sistema de Incendios con Arduino.
 
 ![Tinkercad](Segundo_parcial/Img/siemens-sistema-contraincendios-edificios-pequenos-medianos.png)
 
